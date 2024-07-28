@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="container">
+        <h1>Available Parking Slots</h1>
+        <ul>
+            {% for slot in slots %}
+                <li>
+                    Slot {{ slot.slot_number }} - 
+                    {% if slot.is_occupied %}
+                        Occupied by User ID {{ slot.occupied_by }}
+                        <a href="{{ url_for('main.toggle_slot', slot_id=slot.id) }}">Free Slot</a>
+                    {% else %}
+                        <span class="available">Available</span>
+                        <a href="{{ url_for('main.toggle_slot', slot_id=slot.id) }}">Occupy Slot</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

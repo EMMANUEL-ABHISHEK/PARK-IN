@@ -1,0 +1,18 @@
+# Migrations
+
+This directory contains Alembic migration scripts for the database schema.
+
+## Files
+
+- **`versions/`**: This folder stores individual migration scripts, each representing a set of changes to the database schema.
+- **`alembic.ini`**: Alembic configuration file, containing settings for the migration process.
+- **`env.py`**: Environment script that sets up the context for running migrations and connects to the database.
+- **`script.py.mako`**: Template file for generating new migration scripts.
+- **`README`**: Information about using Alembic and managing migrations.
+
+## Running Migrations
+
+To create a new migration after changing the database schema:
+
+```bash
+flask db migrate -m "Migration description here"

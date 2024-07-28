@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="container">
+        <h1>Dashboard</h1>
+        <p>Welcome, {{ user.username }}!</p>
+        <ul>
+            <li>Email: {{ user.email }}</li>
+            <li>Registered on: {{ user.date_created.strftime('%B %d, %Y') }}</li>
+        </ul>
+        <h2>Your Parking Slots</h2>
+        <ul>
+            {% for slot in user.parking_slots %}
+                <li>Slot {{ slot.slot_number }} - Occupied: {{ slot.is_occupied }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
